@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kospa.Web", "Kospa.Web\Kospa.Web.csproj", "{DC34A9BA-B192-4665-BBE2-3CF45CB463EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kospa.Data", "..\Kospa.Data\Kospa.Data\Kospa.Data.csproj", "{EDF4470C-A368-4E00-865B-4D08CAB16DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kospa.Data", "Kospa.Data\Kospa.Data.csproj", "{EDF4470C-A368-4E00-865B-4D08CAB16DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
