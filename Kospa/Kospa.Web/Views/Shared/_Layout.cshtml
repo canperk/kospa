@@ -1,11 +1,110 @@
-﻿<!DOCTYPE html>
-
-<html>
+﻿<html lang="tr-TR" class="webkit">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="utf-8">
+    <title>SPA with knockout</title>
+    <style>
+        body {
+            font-family: 'Segoe UI';
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="/styles/extensions.css">
+    <link rel="stylesheet" type="text/css" href="/styles/site.css">
 </head>
 <body>
-    @RenderBody()
+    <div id="fxshell-wallpaper"> <div id="fxshell-wallpaper-b"> </div> <div id="fxshell-wallpaper-a"> </div> </div> <div id="headerbar-wrapper">
+        <div id="headerbar" class="fxs-headerbar">
+            <div class="fxs-headerbar-navigation">
+                <div class="fxs-headerbar-navigation-wrapper">
+                    <span class="headerTitle">SPA & KO</span>
+                </div>
+            </div>
+            <div class="fxs-headerbar-controls-parent">
+                <div class="fxs-headerbar-avatarbar">
+                    <div class="fxs-avatarbar">
+                        <a href="#" class="fxs-avatarbar-link">
+                            <div class="fxs-avatarbar-image"></div>
+                            <span class="fxs-avatarbar-text">Can PERK</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <div id="fxshell-navpane">
+        <div id="fxshell-nav1">
+            <div class="fx-scrollbar" style="width: 200px; height: 845px;">
+                <div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 250px; height: 895px;">
+                    <div id="fxshell-nav1-scroll" class="fx-scrollbar-content" aria-disabled="false" style="overflow: visible; height: 845px; width: 200px;">
+                        <div id="fxshell-nav1-items">
+                            <nav>
+                                <ul class="fxshell-navigation-nav1-container">
+                                    <li class="fxshell-nav1-item fxshell-nav1-item-legacy" aria-selected="false" data-state="2digit">
+                                        <a href="#Meetings">
+                                            <div class="fxshell-nav1-item-highlight"></div>
+                                            <div class="fxshell-nav1-icon">
+                                                <img src="//az213233.vo.msecnd.net/Content/6.7.00298.117.171127-1416/All/All.png" title="All Items">
+                                            </div>
+                                            <div class="fxshell-nav1-count" data-showcount="true">8</div>
+                                            <div class="fxshell-nav1-label" title="All Items">Meetings</div>
+                                        </a>
+                                    </li>
+                                    <li class="fxshell-nav1-item fxshell-nav1-item-legacy" aria-selected="false" data-state="2digit">
+                                        <a href="#Participants">
+                                            <div class="fxshell-nav1-item-highlight"></div>
+                                            <div class="fxshell-nav1-icon">
+                                                <img src="//az213233.vo.msecnd.net/Content/6.7.00298.117.171127-1416/VirtualMachines/VirtualMachines.png" title="Virtual machines">
+                                            </div>
+                                            <div class="fxshell-nav1-count" data-showcount="true">11</div>
+                                            <div class="fxshell-nav1-label" title="Virtual machines">Participants</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div><div style="position: absolute; height: 1px; width: 1px; left: 0px; top: -1px;"></div><div style="position: absolute; height: 1px; width: 1px; top: 0px; left: -1px;"></div>
+                </div>
+            </div>
+        </div>
+        <div id="fxshell-nav2" style="left: 200px; display: none;">
+            <a id="fxshell-nav2-back" title="Back">
+                <img src="//az213233.vo.msecnd.net/Content/6.7.00298.117.171127-1416/Images/fxshell.nav2.back.png" alt="Back" title="Back">
+            </a><div id="fxshell-nav2-scroll"><div class="fx-scrollbar" style="width: 0px; height: 0px;"><div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 50px; height: 50px;"><div id="fxshell-nav2-items" class="fx-scrollbar-content" aria-disabled="false" style="overflow: visible; height: 0px; width: 0px;"><nav><ul class="fxshell-navigation-nav2-container"></ul></nav></div><div style="position: absolute; height: 1px; width: 1px; left: 0px; top: -1px;"></div><div style="position: absolute; height: 1px; width: 1px; top: 0px; left: -1px;"></div></div></div></div>
+        </div>
+    </div>
+    <div id="aux-foreground">
+        <div id="aux-body">
+            <div id="secondary-container">
+                <div id="aux-pane-grid">
+                    <h1 id="aux-GridHeader" class="itemtitle"> </h1> <div id="aux-GridContent">
+                        <div id="aux-collectionView" class="aux-collectionView fx-grid">
+                            <h1 class="itemtitle">All Items</h1>
+                            <div class="aux-tabcontent" style="display: block;">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fxshell-tabspinner" style="display: none;"> </div>
+            <div id="drawer" class="fxs-drawer">
+                <div class="fxs-drawer-inner" style="height: 60px;">
+                    <div class="fxs-drawer-slip">
+                        <div class="fxs-drawer-drawertaskbar fxs-drawertaskbar">
+                            <div class="fxs-drawertaskbar-commands fxs-drawercommands">
+                                <ul class="fxs-drawercommands-commands-global"></ul>
+                                <ul class="fxs-drawercommands-commands-contextual"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
+    <script src="~/scripts/moment.min.js"></script>
+    <script src="~/scripts/site.js"></script>
+    @RenderSection("scripts")
 </body>
 </html>

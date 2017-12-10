@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<table class="fx-grid-full">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Meeting Date</th>
+            <th>Participant Count</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:meetings">
+        <tr role="row">
+            <td data-bind="text:title" role="gridcell"></td>
+            <td data-bind="dateTime:date" role="gridcell"></td>
+            <td data-bind="text:count" role="gridcell"></td>
+        </tr>
+    </tbody>
+</table>
+
+@section scripts{ 
+    <script>
+        var viewModel = function () {
+            var self = this;
+            self.meetings = ko.observableArray();
+            self.load = function () {
+                fetch("/Home/GetMeetings", {
+                    method: 'get',
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => {
+                        return response.json()
+                    }).then(result => {
+                        if (result.length) {
+                            for (var i = 0; i < result.length; i++) {
+                                var r = result[i];
+                                self.meetings.push(new meeting(r.title, r.meetingDate, r.participantCount));
+                            }
+                        }
+                    });
+            }
+            self.load();
+        }
+
+        ko.applyBindings(new viewModel());
+
+        var meeting = function (title, date, count) {
+            this.title = title;
+            this.date = date;
+            this.count = count;
+        }
+    </script>
+}

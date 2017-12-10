@@ -2,14 +2,14 @@
 
 namespace Kospa.Data.Helpers
 {
-    public class UserComparer : IEqualityComparer<User>
+    public class ParticipantComparer : IEqualityComparer<Participant>
     {
-        public bool Equals(User x, User y)
+        public bool Equals(Participant x, Participant y)
         {
             return x.Id == y.Id;
         }
 
-        public int GetHashCode(User obj)
+        public int GetHashCode(Participant obj)
         {
             return obj.Id;
         }

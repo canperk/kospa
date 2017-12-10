@@ -1,0 +1,10 @@
+﻿.headerTitle {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height:30px;
+}
+.fx-grid table thead tr th{
+    padding-left:3px;
+}
