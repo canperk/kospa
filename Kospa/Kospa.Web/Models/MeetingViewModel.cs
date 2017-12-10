@@ -7,5 +7,6 @@ namespace Kospa.Web.Models
         public string Title { get; set; }
         public DateTime MeetingDate { get; set; }
         public int ParticipantCount { get; set; }
+        public int Id { get; internal set; }
     }
 }

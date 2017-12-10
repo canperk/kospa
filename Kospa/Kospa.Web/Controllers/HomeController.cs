@@ -16,6 +16,7 @@ namespace Kospa.Web.Controllers
         {
             var vm = MeetingContext.Meetings.Select(i => new MeetingViewModel
             {
+                Id = i.Id,
                 Title = i.Title,
                 MeetingDate = i.Date,
                 ParticipantCount = i.Users.Count

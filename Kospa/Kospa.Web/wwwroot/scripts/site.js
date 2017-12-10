@@ -47,4 +47,12 @@ $(document).ready(function () {
         menu.toggleClass("fxs-contextmenu-shown");
         menu.toggleClass("fxs-contextmenu-hidden");
     });
+    $(document).on("click", "tr[selectable='true']", function (e) {
+        $(this).siblings().attr("aria-selected", "false").removeClass("fx-grid-selected");
+        $(this).attr("aria-selected", "true").addClass("fx-grid-selected");
+        var url = $(this).find('td:first a').attr("href");
+        if (url && url.startsWith("/#")) {
+            window.location = url;
+        }
+    });
 });

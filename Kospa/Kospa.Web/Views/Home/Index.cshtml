@@ -10,9 +10,9 @@
         </tr>
     </thead>
     <tbody data-bind="foreach:meetings" class="fx-grid-groupdata" role="rowgroup">
-        <tr role="row">
+        <tr role="row" aria-selected="false" selectable="true">
             <td role="gridcell" class="waz-grid-navigation">
-                <a>
+                <a data-bind="attr: { href:'/#Meeting/View/' + id}">
                     <span  data-bind="text:title"></span>
                 </a>
             </td>
@@ -40,7 +40,7 @@
                         if (result.length) {
                             for (var i = 0; i < result.length; i++) {
                                 var r = result[i];
-                                self.meetings.push(new meeting(r.title, r.meetingDate, r.participantCount));
+                                self.meetings.push(new meeting(r.id, r.title, r.meetingDate, r.participantCount));
                             }
                         }
                     });
@@ -50,7 +50,8 @@
 
         ko.applyBindings(new viewModel());
 
-        var meeting = function (title, date, count) {
+        var meeting = function (id, title, date, count) {
+            this.id = id;
             this.title = title;
             this.date = date;
             this.count = count;
