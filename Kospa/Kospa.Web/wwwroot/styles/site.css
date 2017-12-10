@@ -11,3 +11,8 @@
 .fxs-drawer-inner{
     transition:all linear .3s;
 }
+#fxshell-nav1 svg{
+    color:#FFF;
+    font-size:28px;
+    margin-top:5px;
+}

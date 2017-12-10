@@ -52,7 +52,7 @@
                                         <a href="#Meetings">
                                             <div class="fxshell-nav1-item-highlight"></div>
                                             <div class="fxshell-nav1-icon">
-                                                <img src="~/images/All.png" title="Meetings">
+                                                <i class="fas fa-comments"></i>
                                             </div>
                                             <div class="fxshell-nav1-count" data-showcount="true">8</div>
                                             <div class="fxshell-nav1-label" title="All Items">MEETINGS</div>
@@ -62,7 +62,7 @@
                                         <a href="#Participants">
                                             <div class="fxshell-nav1-item-highlight"></div>
                                             <div class="fxshell-nav1-icon">
-                                                <img src="~/images/Storage.png" title="Participants">
+                                                <i class="fas fa-users"></i>
                                             </div>
                                             <div class="fxshell-nav1-count" data-showcount="true">11</div>
                                             <div class="fxshell-nav1-label" title="Virtual machines">PARTICIPANTS</div>
@@ -160,13 +160,19 @@
                         <div class="fxs-drawer-drawertaskbar fxs-drawertaskbar">
                             <div id="drawerNew" class="fxs-drawertaskbar-newbutton fx-button" role="button" tabindex="0">
                                 <div class="fxs-drawertaskbar-newbutton-img">
-                                    <img alt="" src="~/images/icon-drawer-add.png">
+                                    <i class="fas fa-plus fa-2x"></i>
                                 </div>
                                 <span class="fxs-drawertaskbar-newbutton-text">New</span>
-                            </div><div class="fxs-drawertaskbar-commands fxs-drawercommands">
+                            </div>
+                            <div class="fxs-drawertaskbar-commands fxs-drawercommands">
                                 <ul class="fxs-drawercommands-commands-global" style="display:none">
                                     <li style="display: list-item;">
                                         <div class="fxs-command fx-button fxs-command-action-delete" role="button" tabindex="0" aria-disabled="false">
+                                            <div class="fxs-command-iconwrapper">
+                                                <div class="fxs-command-icon">
+                                                    <i class="fas fa-trash-alt fa-3x"></i>
+                                                </div>
+                                            </div>
                                             <div class="fxs-command-text">Delete</div>
                                         </div>
                                     </li>
@@ -195,31 +201,39 @@
                             <div class="fxs-drawermenu-title">New</div>
                             <div class="fxs-drawermenu-closebutton fx-button" title="Close" role="button" tabindex="0">
                                 <div>
-                                    <img alt="Close" src="~/images/icons-closebutton-32-sprite.png">
+                                    <i class="fas fa-times-circle fa-2x"></i>
                                 </div>
                             </div>
                             <div class="fxs-drawermenu-menuandbutton">
                                 <div class="fxs-drawermenu-menuarea">
                                     <div class="fxs-drawermenu-menu fxs-menu">
-                                        <div class="fxs-menu-menu" style="width: 241px;">
-                                            <div class="fx-scrollbar" style="width: 241px; height: 375px;">
-                                                <div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 291px; height: 425px;">
-                                                    <ul class="fx-scrollbar-content" aria-disabled="false" style="overflow: visible; height: 375px; width: 241px;">
-                                                        <li aria-selected="false" aria-disabled="false">
-                                                            <div class="fxs-menu-tablediv">
-                                                                <a href="#" tabindex="0">
-                                                                    <div class="icon Compute">
-                                                                        <img src="~/images/drawer-icons.1.png" alt="Compute">
-                                                                    </div>
-                                                                    <div class="fxs-menu-text">
-                                                                        <div class="fxs-menu-itemtext">Menu 1</div>
-                                                                    </div>
-                                                                </a>
+                                        <div class="fx-scrollbar-scrollable" style="width: 290px; height: 425px;">
+                                            <ul class="fx-scrollbar-content" aria-disabled="false" style="width: 250px;">
+                                                <li aria-selected="false" aria-disabled="false">
+                                                    <div class="fxs-menu-tablediv">
+                                                        <a href="#" tabindex="0">
+                                                            <div class="icon Compute">
+                                                                <i class="fas fa-bullhorn fa-2x fa-2x"></i>
                                                             </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                                            <div class="fxs-menu-text">
+                                                                <div class="fxs-menu-itemtext">Newsfeed</div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li aria-selected="false" aria-disabled="false">
+                                                    <div class="fxs-menu-tablediv">
+                                                        <a href="#" tabindex="0">
+                                                            <div class="icon Compute">
+                                                                <i class="fas fa-chart-pie fa-2x fa-2x"></i>
+                                                            </div>
+                                                            <div class="fxs-menu-text">
+                                                                <div class="fxs-menu-itemtext">Analytics</div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -233,6 +247,7 @@
     <script src="~/scripts/jquery-1.7.1.min.js"></script>
     <script src="~/scripts/knockout-3.4.2.js"></script>
     <script src="~/scripts/moment.min.js"></script>
+    <script src="~/scripts/fontawesome.js"></script>
     <script src="~/scripts/site.js"></script>
     @RenderSection("scripts", required: false)
 </body>
