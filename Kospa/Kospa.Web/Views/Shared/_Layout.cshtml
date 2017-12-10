@@ -12,7 +12,9 @@
         <div id="headerbar" class="fxs-headerbar">
             <div class="fxs-headerbar-navigation">
                 <div class="fxs-headerbar-navigation-wrapper">
-                    <span class="headerTitle">SPA & KO</span>
+                    <a href="/">
+                        <span class="headerTitle">SPA & KO</span>
+                    </a>
                 </div>
             </div>
             <div class="fxs-headerbar-controls-parent">
@@ -24,12 +26,12 @@
                         </a>
                         <div class="fxs-avatarbar-menu fxs-contextmenu fxs-contextmenu-hidden" style="right:0; top: 31px;display: none;">
                             <div class="fx-itemlist fx-editablecontrol">
-                                <ul role="" aria-labelledby="null">
-                                    <li tabindex="0" role="itemlist" aria-selected="false" class="first-child fxs-contextmenu-item">
+                                <ul aria-labelledby="null">
+                                    <li tabindex="0" aria-selected="false" class="first-child fxs-contextmenu-item">
                                         <a href="#">Sign out</a>
                                     </li>
-                                    <li tabindex="-1" role="itemlist" aria-selected="false" class="fxs-contextmenu-item fxs-contextmenu-separator"></li>
-                                    <li tabindex="-1" role="itemlist" aria-selected="false" class="fxs-contextmenu-item"><a href="#">Change password</a></li>
+                                    <li tabindex="-1" aria-selected="false" class="fxs-contextmenu-item fxs-contextmenu-separator"></li>
+                                    <li tabindex="-1" aria-selected="false" class="fxs-contextmenu-item"><a href="#">Change password</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -37,7 +39,8 @@
                 </div>
             </div>
         </div>
-    </div> <div id="fxshell-navpane">
+    </div>
+    <div id="fxshell-navpane">
         <div id="fxshell-nav1">
             <div class="fx-scrollbar" style="width: 200px; height: 845px;">
                 <div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 250px; height: 895px;">
@@ -49,7 +52,7 @@
                                         <a href="#Meetings">
                                             <div class="fxshell-nav1-item-highlight"></div>
                                             <div class="fxshell-nav1-icon">
-                                                <img src="~/images/All.png" title="All Items">
+                                                <img src="~/images/All.png" title="Meetings">
                                             </div>
                                             <div class="fxshell-nav1-count" data-showcount="true">8</div>
                                             <div class="fxshell-nav1-label" title="All Items">MEETINGS</div>
@@ -59,7 +62,7 @@
                                         <a href="#Participants">
                                             <div class="fxshell-nav1-item-highlight"></div>
                                             <div class="fxshell-nav1-icon">
-                                                <img src="~/images/VirtualMachines.png" title="Virtual machines">
+                                                <img src="~/images/Storage.png" title="Participants">
                                             </div>
                                             <div class="fxshell-nav1-count" data-showcount="true">11</div>
                                             <div class="fxshell-nav1-label" title="Virtual machines">PARTICIPANTS</div>
@@ -76,15 +79,11 @@
     <div id="aux-foreground">
         <div id="aux-body">
             <div id="secondary-container">
-                <div id="aux-pane-grid">
-                    <h1 id="aux-GridHeader" class="itemtitle"> </h1> <div id="aux-GridContent">
-                        <div id="aux-collectionView" class="aux-collectionView fx-grid">
-                            <h1 class="itemtitle">All Items</h1>
-                            <div class="aux-tabcontent" style="display: block;">
-                                <div class="gridContainer waz-grid fx-grid">
-                                    @RenderBody()
-                                </div>
-                            </div>
+                <div class="aux-collectionView fx-grid">
+                    <h1 class="itemtitle">@ViewBag.Title</h1>
+                    <div style="display: block;">
+                        <div class="gridContainer waz-grid fx-grid">
+                            @RenderBody()
                         </div>
                     </div>
                 </div>
@@ -109,7 +108,8 @@
                                                                 </button>
                                                             </li>
                                                         </ul>
-                                                    </div><div class="fxs-notification-summary" aria-live="polite">
+                                                    </div>
+                                                    <div class="fxs-notification-summary" aria-live="polite">
                                                         <div class="fxs-notification-status">
                                                             <img src="~/images/icon-drawer-warning.png" alt="Warning">
                                                         </div>
@@ -138,7 +138,8 @@
                                                                 </button>
                                                             </li>
                                                         </ul>
-                                                    </div><div class="fxs-notification-summary" aria-live="polite">
+                                                    </div>
+                                                    <div class="fxs-notification-summary" aria-live="polite">
                                                         <div class="fxs-notification-status">
                                                             <img src="~/images/icon-drawer-warning.png" alt="Warning">
                                                         </div>
@@ -183,7 +184,7 @@
                                     </ul>
                                 </div>
                                 <div class="fxs-drawertaskbar-help">
-                                    <a href="#" target="_blank">
+                                    <a href="#">
                                         <img src="~/images/icon-drawer-help.png" alt="Help">
                                     </a>
                                 </div>
@@ -232,6 +233,6 @@
     <script src="~/scripts/knockout-3.4.2.js"></script>
     <script src="~/scripts/moment.min.js"></script>
     <script src="~/scripts/site.js"></script>
-    @RenderSection("scripts")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
