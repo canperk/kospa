@@ -6,3 +6,45 @@
         element.innerText = strDate;
     }
 };
+
+$(document).ready(function () {
+    $("#drawerNew").click(function () {
+        $(".fxs-drawer-drawertaskbar.fxs-drawertaskbar").addClass("fxs-drawer-inactive");
+        $("#drawer").addClass("fxs-drawer-open fxs-drawer-showmenu");
+        $(".fxs-drawer-inner").css("height", "530px");
+    });
+    $(".fxs-drawermenu-closebutton.fx-button").click(function () {
+        $(".fxs-drawer-inner").css("height", "60px");
+        setTimeout(function () {
+            $("#drawer").removeClass("fxs-drawer-open fxs-drawer-showmenu");
+            $(".fxs-drawer-drawertaskbar.fxs-drawertaskbar").removeClass("fxs-drawer-inactive");
+        }, 300);
+    });
+
+    var notificationTrayOpened = false;
+    $(".fxs-drawertray-button.fx-button").click(function () {
+        if (!notificationTrayOpened) {
+            $("#notificationTray").css({ "display": "block", "top": "-110px" });
+            notificationTrayOpened = true;
+        }
+        else {
+            $("#notificationTray").css({ "display": "none", "top": "-110px" });
+            notificationTrayOpened = false;
+        }
+    });
+    var avatarMenuOpened = false;
+    $(".fxs-avatarbar").click(function () {
+        var menu = $(".fxs-avatarbar-menu.fxs-contextmenu");
+        if (!avatarMenuOpened) {
+            menu.css("display", "block");
+            avatarMenuOpened = true;
+        }
+        else {
+            menu.css("display", "none");
+            avatarMenuOpened = false;
+        }
+        
+        menu.toggleClass("fxs-contextmenu-shown");
+        menu.toggleClass("fxs-contextmenu-hidden");
+    });
+});

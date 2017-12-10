@@ -8,3 +8,6 @@
 .fx-grid table thead tr th{
     padding-left:3px;
 }
+.fxs-drawer-inner{
+    transition:all linear .3s;
+}

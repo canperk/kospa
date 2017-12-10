@@ -9,9 +9,13 @@
             <th>Participant Count</th>
         </tr>
     </thead>
-    <tbody data-bind="foreach:meetings">
+    <tbody data-bind="foreach:meetings" class="fx-grid-groupdata" role="rowgroup">
         <tr role="row">
-            <td data-bind="text:title" role="gridcell"></td>
+            <td role="gridcell" class="waz-grid-navigation">
+                <a>
+                    <span  data-bind="text:title"></span>
+                </a>
+            </td>
             <td data-bind="dateTime:date" role="gridcell"></td>
             <td data-bind="text:count" role="gridcell"></td>
         </tr>

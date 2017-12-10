@@ -3,17 +3,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta charset="utf-8">
     <title>SPA with knockout</title>
-    <style>
-        body {
-            font-family: 'Segoe UI';
-        }
-    </style>
     <link rel="stylesheet" type="text/css" href="/styles/core.css">
     <link rel="stylesheet" type="text/css" href="/styles/extensions.css">
     <link rel="stylesheet" type="text/css" href="/styles/site.css">
 </head>
 <body>
-    <div id="fxshell-wallpaper"> <div id="fxshell-wallpaper-b"> </div> <div id="fxshell-wallpaper-a"> </div> </div> <div id="headerbar-wrapper">
+    <div id="headerbar-wrapper">
         <div id="headerbar" class="fxs-headerbar">
             <div class="fxs-headerbar-navigation">
                 <div class="fxs-headerbar-navigation-wrapper">
@@ -27,6 +22,17 @@
                             <div class="fxs-avatarbar-image"></div>
                             <span class="fxs-avatarbar-text">Can PERK</span>
                         </a>
+                        <div class="fxs-avatarbar-menu fxs-contextmenu fxs-contextmenu-hidden" style="right:0; top: 31px;display: none;">
+                            <div class="fx-itemlist fx-editablecontrol">
+                                <ul role="" aria-labelledby="null">
+                                    <li tabindex="0" role="itemlist" aria-selected="false" class="first-child fxs-contextmenu-item">
+                                        <a href="#">Sign out</a>
+                                    </li>
+                                    <li tabindex="-1" role="itemlist" aria-selected="false" class="fxs-contextmenu-item fxs-contextmenu-separator"></li>
+                                    <li tabindex="-1" role="itemlist" aria-selected="false" class="fxs-contextmenu-item"><a href="#">Change password</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,33 +49,28 @@
                                         <a href="#Meetings">
                                             <div class="fxshell-nav1-item-highlight"></div>
                                             <div class="fxshell-nav1-icon">
-                                                <img src="//az213233.vo.msecnd.net/Content/6.7.00298.117.171127-1416/All/All.png" title="All Items">
+                                                <img src="~/images/All.png" title="All Items">
                                             </div>
                                             <div class="fxshell-nav1-count" data-showcount="true">8</div>
-                                            <div class="fxshell-nav1-label" title="All Items">Meetings</div>
+                                            <div class="fxshell-nav1-label" title="All Items">MEETINGS</div>
                                         </a>
                                     </li>
                                     <li class="fxshell-nav1-item fxshell-nav1-item-legacy" aria-selected="false" data-state="2digit">
                                         <a href="#Participants">
                                             <div class="fxshell-nav1-item-highlight"></div>
                                             <div class="fxshell-nav1-icon">
-                                                <img src="//az213233.vo.msecnd.net/Content/6.7.00298.117.171127-1416/VirtualMachines/VirtualMachines.png" title="Virtual machines">
+                                                <img src="~/images/VirtualMachines.png" title="Virtual machines">
                                             </div>
                                             <div class="fxshell-nav1-count" data-showcount="true">11</div>
-                                            <div class="fxshell-nav1-label" title="Virtual machines">Participants</div>
+                                            <div class="fxshell-nav1-label" title="Virtual machines">PARTICIPANTS</div>
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                    </div><div style="position: absolute; height: 1px; width: 1px; left: 0px; top: -1px;"></div><div style="position: absolute; height: 1px; width: 1px; top: 0px; left: -1px;"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="fxshell-nav2" style="left: 200px; display: none;">
-            <a id="fxshell-nav2-back" title="Back">
-                <img src="//az213233.vo.msecnd.net/Content/6.7.00298.117.171127-1416/Images/fxshell.nav2.back.png" alt="Back" title="Back">
-            </a><div id="fxshell-nav2-scroll"><div class="fx-scrollbar" style="width: 0px; height: 0px;"><div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 50px; height: 50px;"><div id="fxshell-nav2-items" class="fx-scrollbar-content" aria-disabled="false" style="overflow: visible; height: 0px; width: 0px;"><nav><ul class="fxshell-navigation-nav2-container"></ul></nav></div><div style="position: absolute; height: 1px; width: 1px; left: 0px; top: -1px;"></div><div style="position: absolute; height: 1px; width: 1px; top: 0px; left: -1px;"></div></div></div></div>
         </div>
     </div>
     <div id="aux-foreground">
@@ -80,7 +81,9 @@
                         <div id="aux-collectionView" class="aux-collectionView fx-grid">
                             <h1 class="itemtitle">All Items</h1>
                             <div class="aux-tabcontent" style="display: block;">
-                                @RenderBody()
+                                <div class="gridContainer waz-grid fx-grid">
+                                    @RenderBody()
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,12 +91,136 @@
             </div>
             <div id="fxshell-tabspinner" style="display: none;"> </div>
             <div id="drawer" class="fxs-drawer">
+                <div id="notificationTray" class="fxs-drawer-toastbox fxs-toastbox fxs-toastbox-direction-top" style="display: none;">
+                    <div>
+                        <div class="fxs-drawer-drawerwarning fxs-drawernotifications">
+                            <div class="fx-scrollbar" style="width: 1160px; height: 55px;">
+                                <div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 1210px; height: 105px;">
+                                    <div class="fxs-drawernotifications-listcontainer fx-scrollbar-content" aria-disabled="false" style="overflow: visible; height: 55px; width: 1160px;">
+                                        <ul class="fxs-drawernotifications-list">
+                                            <li>
+                                                <div role="alert" aria-live="polite" class="fxs-notification">
+                                                    <div class="fxs-notification-actions">
+                                                        <ul class="fxs-notification-buttons">
+                                                            <li>
+                                                                <button class="fxs-notification-button fx-button" role="button" tabindex="0">
+                                                                    <span class="fxs-notification-button-text">Close</span>
+                                                                    <img src="~/images/icon-behavior-ok.png" alt="Go to the Account portal">
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div><div class="fxs-notification-summary" aria-live="polite">
+                                                        <div class="fxs-notification-status">
+                                                            <img src="~/images/icon-drawer-warning.png" alt="Warning">
+                                                        </div>
+                                                        <div class="fxs-notification-header">Notification Title 1</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fxs-drawer-drawerwarning fxs-drawernotifications">
+                            <div class="fx-scrollbar" style="width: 1160px; height: 55px;">
+                                <div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 1210px; height: 105px;">
+                                    <div class="fxs-drawernotifications-listcontainer fx-scrollbar-content" aria-disabled="false" style="overflow: visible; height: 55px; width: 1160px;">
+                                        <ul class="fxs-drawernotifications-list">
+                                            <li>
+                                                <div role="alert" aria-live="polite" class="fxs-notification">
+                                                    <div class="fxs-notification-actions">
+                                                        <ul class="fxs-notification-buttons">
+                                                            <li>
+                                                                <button class="fxs-notification-button fx-button" role="button" tabindex="0">
+                                                                    <span class="fxs-notification-button-text">Close</span>
+                                                                    <img src="~/images/icon-behavior-ok.png" alt="Go to the Account portal">
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div><div class="fxs-notification-summary" aria-live="polite">
+                                                        <div class="fxs-notification-status">
+                                                            <img src="~/images/icon-drawer-warning.png" alt="Warning">
+                                                        </div>
+                                                        <div class="fxs-notification-header">Notification Title 2</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 <div class="fxs-drawer-inner" style="height: 60px;">
-                    <div class="fxs-drawer-slip">
+                    <div class="fxs-drawer-slip" style="top: 0px;">
                         <div class="fxs-drawer-drawertaskbar fxs-drawertaskbar">
-                            <div class="fxs-drawertaskbar-commands fxs-drawercommands">
-                                <ul class="fxs-drawercommands-commands-global"></ul>
+                            <div id="drawerNew" class="fxs-drawertaskbar-newbutton fx-button" role="button" tabindex="0">
+                                <div class="fxs-drawertaskbar-newbutton-img">
+                                    <img alt="" src="~/images/icon-drawer-add.png">
+                                </div>
+                                <span class="fxs-drawertaskbar-newbutton-text">New</span>
+                            </div><div class="fxs-drawertaskbar-commands fxs-drawercommands">
+                                <ul class="fxs-drawercommands-commands-global" style="display:none">
+                                    <li style="display: list-item;">
+                                        <div class="fxs-command fx-button fxs-command-action-delete" role="button" tabindex="0" aria-disabled="false">
+                                            <div class="fxs-command-text">Delete</div>
+                                        </div>
+                                    </li>
+                                </ul>
                                 <ul class="fxs-drawercommands-commands-contextual"></ul>
+                            </div><div class="fxs-drawertaskbar-notifications">
+                                <div class="fxs-drawertaskbar-tray fxs-drawertray">
+                                    <ul>
+                                        <li>
+                                            <div class="fxs-drawertray-button fx-button" data-code="warning" title="Warning" role="button" tabindex="0" aria-pressed="false">
+                                                <span class="fxs-drawertray-count">1</span>
+                                                <img src="~/images/icon-drawer-warning.png" alt="Warning">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="fxs-drawertaskbar-help">
+                                    <a href="#" target="_blank">
+                                        <img src="~/images/icon-drawer-help.png" alt="Help">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fxs-drawer-drawermenu fxs-drawermenu fxs-drawer-inactive" role="dialog" aria-atomic="true" style="">
+                            <div class="fxs-drawermenu-title">New</div>
+                            <div class="fxs-drawermenu-closebutton fx-button" title="Close" role="button" tabindex="0">
+                                <div>
+                                    <img alt="Close" src="~/images/icons-closebutton-32-sprite.png">
+                                </div>
+                            </div>
+                            <div class="fxs-drawermenu-menuandbutton">
+                                <div class="fxs-drawermenu-menuarea">
+                                    <div class="fxs-drawermenu-menu fxs-menu">
+                                        <div class="fxs-menu-menu" style="width: 241px;">
+                                            <div class="fx-scrollbar" style="width: 241px; height: 375px;">
+                                                <div class="fx-scrollbar-scrollable" style="overflow: scroll; width: 291px; height: 425px;">
+                                                    <ul class="fx-scrollbar-content" aria-disabled="false" style="overflow: visible; height: 375px; width: 241px;">
+                                                        <li aria-selected="false" aria-disabled="false">
+                                                            <div class="fxs-menu-tablediv">
+                                                                <a href="#" tabindex="0">
+                                                                    <div class="icon Compute">
+                                                                        <img src="~/images/drawer-icons.1.png" alt="Compute"><!-- /ko -->
+                                                                    </div>
+                                                                    <div class="fxs-menu-text">
+                                                                        <div class="fxs-menu-itemtext">Compute</div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -101,8 +228,8 @@
             </div>
         </div>
     </div>
-    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
-    <script src="//ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
+    <script src="~/scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/scripts/knockout-3.4.2.js"></script>
     <script src="~/scripts/moment.min.js"></script>
     <script src="~/scripts/site.js"></script>
     @RenderSection("scripts")
