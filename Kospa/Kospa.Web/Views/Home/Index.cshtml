@@ -1,30 +1,44 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<table class="fx-grid-full">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Meeting Date</th>
-            <th>Participant Count</th>
-        </tr>
-    </thead>
-    <tbody data-bind="foreach:meetings" class="fx-grid-groupdata" role="rowgroup">
-        <tr role="row" aria-selected="false" selectable="true">
-            <td role="gridcell" class="waz-grid-navigation">
-                <a data-bind="attr: { href:'/#Meeting/View/' + id}">
-                    <span  data-bind="text:title"></span>
-                </a>
-            </td>
-            <td data-bind="dateTime:date" role="gridcell"></td>
-            <td data-bind="text:count" role="gridcell"></td>
-        </tr>
-    </tbody>
-</table>
+<script type="text/html" id="tablePanel">
+    <table class="fx-grid-full">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Meeting Date</th>
+                <th>Participant Count</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:meetings" class="fx-grid-groupdata" role="rowgroup">
+            <tr role="row" aria-selected="false" selectable="true">
+                <td role="gridcell" class="waz-grid-navigation">
+                    <a data-bind="attr: { href:'/#Meeting/View/' + id}">
+                        <span data-bind="text:title"></span>
+                    </a>
+                </td>
+                <td data-bind="dateTime:date" role="gridcell"></td>
+                <td data-bind="text:count" role="gridcell"></td>
+            </tr>
+        </tbody>
+    </table>
+</script>
+<script type="text/html" id="detailPanel">
+    Detail
+</script>
+<div data-bind="template:currentPanel">
+
+</div>
 <hr />
 
 @section scripts{ 
     <script>
+        var meeting = function (id, title, date, count) {
+            this.id = id;
+            this.title = title;
+            this.date = date;
+            this.count = count;
+        }
         var viewModel = function () {
             var self = this;
             self.meetings = ko.observableArray();
@@ -46,16 +60,12 @@
                         }
                     });
             }
+            self.currentPanel = ko.observable("tablePanel");
             self.load();
         }
+        var vm = new viewModel();
+        ko.applyBindings(vm);
 
-        ko.applyBindings(new viewModel());
-
-        var meeting = function (id, title, date, count) {
-            this.id = id;
-            this.title = title;
-            this.date = date;
-            this.count = count;
-        }
+        
     </script>
 }

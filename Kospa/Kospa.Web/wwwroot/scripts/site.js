@@ -6,7 +6,19 @@
         element.innerText = strDate;
     }
 };
-
+var app = $.sammy(function () {
+    this.get('/#Meetings', function () {
+        vm.currentPanel("tablePanel");
+    });
+    this.get('/#Participants', function () {
+        console.log("participants");
+    });
+    this.get('/#Meeting/View/:id', function () {
+        vm.currentPanel("detailPanel");
+        console.log(this.params.id);
+    });
+    this.notFound = function (v, p) {}
+});
 $(document).ready(function () {
     $("#drawerNew").click(function () {
         $(".fxs-drawer-drawertaskbar.fxs-drawertaskbar").addClass("fxs-drawer-inactive");
@@ -55,4 +67,7 @@ $(document).ready(function () {
             window.location = url;
         }
     });
+
+    
+    app.run();
 });
