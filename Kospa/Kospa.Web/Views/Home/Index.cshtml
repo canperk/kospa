@@ -24,14 +24,29 @@
     </table>
 </script>
 <script type="text/html" id="detailPanel">
-    Detail
+    <div data-bind="with:selected">
+        <h2 data-bind="text:'Title : ' + title"></h2>
+        <h2 data-bind="dateTimeWithLabel:'Date : ' + date"></h2>
+        <hr />
+        <table class="fx-grid-full">
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:users" class="fx-grid-groupdata">
+                <tr>
+                    <td data-bind="text:firstname"></td>
+                    <td data-bind="text:lastname"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </script>
 <div data-bind="template:currentPanel">
-
 </div>
-<hr />
-
-@section scripts{ 
+@section scripts{
     <script>
         var meeting = function (id, title, date, count) {
             this.id = id;
@@ -41,31 +56,50 @@
         }
         var viewModel = function () {
             var self = this;
+            self.selected = ko.observable({ title: "", date: "2017-01-01 00:00:00.000", users : []});
             self.meetings = ko.observableArray();
-            self.load = function () {
-                fetch("/Home/GetMeetings", {
-                    method: 'get',
-                    headers: {
-                        'Accept': 'application/json, text/plain, */*',
-                        'Content-Type': 'application/json'
-                    }
-                }).then(response => {
-                        return response.json()
-                    }).then(result => {
-                        if (result.length) {
-                            for (var i = 0; i < result.length; i++) {
-                                var r = result[i];
-                                self.meetings.push(new meeting(r.id, r.title, r.meetingDate, r.participantCount));
-                            }
-                        }
-                    });
-            }
             self.currentPanel = ko.observable("tablePanel");
-            self.load();
+
+            self.load = function () {
+                callAjax("/Home/GetMeetings", function (data) {
+                    if (data.length) {
+                        self.meetings.removeAll();
+                        for (var i = 0; i < data.length; i++) {
+                            var r = data[i];
+                            self.meetings.push(new meeting(r.id, r.title, r.meetingDate, r.participantCount));
+                        }
+                    }
+                });
+            }
+            self.loadMeetingDetail = function (id) {
+                callAjax("Home/GetMeetingById/" + id, function (data) {
+                    if (data) {
+                        self.selected(data);
+                        self.selected.valueHasMutated();
+                    }
+                });
+            }
+        }
+        function callAjax(url, callback) {
+            showLoader();
+            fetch(url, {
+                method: 'get',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                return response.json();
+            }).then(result => {
+                callback(result);
+                hideLoader();
+            }).catch(reason => {
+                hideLoader();
+            });
         }
         var vm = new viewModel();
         ko.applyBindings(vm);
 
-        
+
     </script>
 }

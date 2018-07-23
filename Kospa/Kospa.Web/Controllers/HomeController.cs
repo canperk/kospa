@@ -2,6 +2,7 @@
 using Kospa.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Kospa.Web.Controllers
 {
@@ -12,8 +13,9 @@ namespace Kospa.Web.Controllers
             return View();
         }
 
-        public JsonResult GetMeetings()
+        public async Task<JsonResult> GetMeetings()
         {
+            await Task.Delay(500);
             var vm = MeetingContext.Meetings.Select(i => new MeetingViewModel
             {
                 Id = i.Id,
@@ -22,6 +24,17 @@ namespace Kospa.Web.Controllers
                 ParticipantCount = i.Users.Count
             }).ToList();
             return Json(vm);
+        }
+
+        public async Task<JsonResult> GetMeetingById(int id)
+        {
+            await Task.Delay(500);
+            var vm = MeetingContext.Meetings.FirstOrDefault(i => i.Id == id);
+            if (vm == null)
+            {
+                return null;
+            }
+            return Json(new { Id = vm.Id, Date = vm.Date.ToString(), Title = vm.Title, Users = vm.Users.ToList() });
         }
 
         public IActionResult Participants()
